@@ -47,14 +47,6 @@ class BowlingGameTests(unittest.TestCase):
         game.calculate_score()
         self.assertEqual(game.score, 300)
 
-    def test_all_ones(self):
-        game = BowlingGame()
-        number_of_times = 20
-        pins = 1
-        self.throw_many(game, number_of_times, pins)
-        game.calculate_score()
-        self.assertEqual(game.score, 20)
-
     def test_different_throws(self):
         game = BowlingGame()
         game.throw(6)
@@ -236,3 +228,12 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(10)
         game.calculate_score()
         self.assertEqual(game.score, 95)
+
+    # Test Case ID 7 - check to see if lowest score in each frame except for 0, expected score 20
+    def test_all_ones(self):
+        game = BowlingGame()
+        number_of_times = 20
+        pins = 1
+        self.throw_many(game, number_of_times, pins)
+        game.calculate_score()
+        self.assertEqual(game.score, 20)
