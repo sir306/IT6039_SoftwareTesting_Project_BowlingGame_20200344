@@ -170,3 +170,16 @@ class BowlingGameTests(unittest.TestCase):
         game.calculate_score()
         self.assertEqual(game.score, 50)
 
+    # Test Case ID 5 - incomplete game test, four frame and expected score of 41
+    def test_for_incomplete_game(self):
+        game = BowlingGame()
+        game.throw(0)
+        game.throw(10)
+        game.throw(10)
+        game.throw(0)
+        game.throw(1)
+        game.throw(1)
+        game.throw(2)
+        game.throw(5)
+        game.calculate_score()
+        self.assertEqual(game.score, 41)
