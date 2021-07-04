@@ -41,6 +41,7 @@ class BowlingGameTests(unittest.TestCase):
         for _ in range(number_of_times):
             game.throw(pins)
 
+    # Test Case ID 1 - test for perfect game score total 300
     def test_perfect_game(self):
         game = BowlingGame()
         self.throw_many(game, 12, 10)
