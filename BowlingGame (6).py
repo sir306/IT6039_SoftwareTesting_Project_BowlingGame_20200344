@@ -48,38 +48,6 @@ class BowlingGameTests(unittest.TestCase):
         game.calculate_score()
         self.assertEqual(game.score, 300)
 
-    def test_different_throws(self):
-        game = BowlingGame()
-        game.throw(6)
-        game.throw(0)
-        game.throw(7)
-        game.throw(0)
-        game.throw(2)
-        for _ in range(15):
-            game.throw(0)
-        game.calculate_score()
-        self.assertEqual(game.score, 15)
-
-    def test_for_spare(self):
-        game = BowlingGame()
-        game.throw(4)
-        game.throw(6)
-        game.throw(7)
-        game.throw(0)
-        for _ in range(16):
-            game.throw(0)
-        game.calculate_score()
-        self.assertEqual(game.score, 24)
-
-    def test_for_strike(self):
-        game = BowlingGame()
-        game.throw(10)
-        game.throw(4)
-        game.throw(2)
-        self.throw_many(game, 17, 0)
-        game.calculate_score()
-        self.assertEqual(game.score, 22)
-
     # Test Case ID 2.a - this test will show that 21 balls and all [0,10] and [0,10,0] returns correct
     # value of 100
     def test_for_game_of_spares_version_A(self):
@@ -291,3 +259,38 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(1)
         game.calculate_score()
         self.assertEqual(game.score, 39)
+
+    # Test Case ID 10 - tests game of different values expected total 15
+    def test_different_throws(self):
+        game = BowlingGame()
+        game.throw(6)
+        game.throw(0)
+        game.throw(7)
+        game.throw(0)
+        game.throw(2)
+        for _ in range(15):
+            game.throw(0)
+        game.calculate_score()
+        self.assertEqual(game.score, 15)
+
+    # Test Case ID 11 - test for game with a spare in it, expected score total 24
+    def test_for_spare(self):
+        game = BowlingGame()
+        game.throw(4)
+        game.throw(6)
+        game.throw(7)
+        game.throw(0)
+        for _ in range(16):
+            game.throw(0)
+        game.calculate_score()
+        self.assertEqual(game.score, 24)
+
+    # Test Case ID 12 - test for game with a strike in it, expected total 22
+    def test_for_strike(self):
+        game = BowlingGame()
+        game.throw(10)
+        game.throw(4)
+        game.throw(2)
+        self.throw_many(game, 17, 0)
+        game.calculate_score()
+        self.assertEqual(game.score, 22)
