@@ -90,3 +90,16 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(0)
         game.calculate_score()
         self.assertEqual(game.score, 100)
+
+    # Test Case ID 2.b - this will show 21 balls and 10 spares with a different high score of Test Case ID 2.a
+    # expected score is 101
+    def test_for_game_of_spares_version_B(self):
+        game = BowlingGame()
+        for _ in range(9):
+            game.throw(0)
+            game.throw(10)
+        game.throw(1)
+        game.throw(9)
+        game.throw(0)
+        game.calculate_score()
+        self.assertEqual(game.score, 101)
