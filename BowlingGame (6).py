@@ -15,9 +15,16 @@ class BowlingGame(object):
             # new method that is called if game is incomplete and exits if all frames calculated
             if ball == len(self.throws):
                 break
+            elif len(self.throws) == 1:
+                self.score = self.throws[ball]
+                break
+            elif len(self.throws) == 2:
+                self.score += self.throws[ball] + self.throws[ball + 1]
+                break
             elif ball > len(self.throws) or ball + 1 > len(self.throws):
                 self.score += self.throws[ball]
                 break
+            # end of new method
             elif self.throws[ball] == 10:
                 self.score += 10 + self.throws[ball + 1] + self.throws[ball + 2]
                 ball += 1
@@ -188,3 +195,18 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(5)
         game.calculate_score()
         self.assertEqual(game.score, 41)
+
+    # Test Case ID 5.2 - check to see how one value in game will calculate, expected score of 10
+    def test_for_one_strike(self):
+        game = BowlingGame()
+        game.throw(10)
+        game.calculate_score()
+        self.assertEqual(game.score, 10)
+
+    # Test Case ID 5.3 - check to see how two values in game will calculate, expected score of 10
+    def test_for_one_spare(self):
+        game = BowlingGame()
+        game.throw(0)
+        game.throw(10)
+        game.calculate_score()
+        self.assertEqual(game.score, 10)
