@@ -12,7 +12,13 @@ class BowlingGame(object):
     def calculate_score(self):
         ball = 0
         for frames in range(10):
-            if self.throws[ball] == 10:
+            # new method that is called if game is incomplete and exits if all frames calculated
+            if ball == len(self.throws):
+                break
+            elif ball > len(self.throws) or ball + 1 > len(self.throws):
+                self.score += self.throws[ball]
+                break
+            elif self.throws[ball] == 10:
                 self.score += 10 + self.throws[ball + 1] + self.throws[ball + 2]
                 ball += 1
             elif self.throws[ball] + self.throws[ball + 1] == 10:
@@ -176,7 +182,6 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(0)
         game.throw(10)
         game.throw(10)
-        game.throw(0)
         game.throw(1)
         game.throw(1)
         game.throw(2)
