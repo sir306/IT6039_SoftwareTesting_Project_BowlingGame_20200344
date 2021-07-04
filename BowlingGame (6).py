@@ -137,9 +137,36 @@ class BowlingGameTests(unittest.TestCase):
         game.calculate_score()
         self.assertEqual(game.score, 144)
 
-    # Test Case ID 3 - Throw 20 balls all gutters
+    # Test Case ID 3 - Throw 20 balls all gutters expected score 0
     def test_all_gutters(self):
         game = BowlingGame()
         self.throw_many(game, 20, 0)
         game.calculate_score()
         self.assertEqual(game.score, 0)
+
+    # Test Case ID 4 - this tests a game with no strike or spare and 20 throws expected score 50
+    def test_for_no_spares_or_strikes(self):
+        game = BowlingGame()
+        game.throw(0)
+        game.throw(1)
+        game.throw(1)
+        game.throw(2)
+        game.throw(2)
+        game.throw(3)
+        game.throw(3)
+        game.throw(4)
+        game.throw(4)
+        game.throw(5)
+        game.throw(5)
+        game.throw(4)
+        game.throw(4)
+        game.throw(3)
+        game.throw(3)
+        game.throw(2)
+        game.throw(2)
+        game.throw(1)
+        game.throw(1)
+        game.throw(0)
+        game.calculate_score()
+        self.assertEqual(game.score, 50)
+
