@@ -79,3 +79,14 @@ class BowlingGameTests(unittest.TestCase):
         self.throw_many(game, 17, 0)
         game.calculate_score()
         self.assertEqual(game.score, 22)
+
+    # Test Case ID 2.a - this test will show that 21 balls and all [0,10] and [0,10,0] returns correct
+    # value of 100
+    def test_for_game_of_spares_version_A(self):
+        game = BowlingGame()
+        for _ in range(10):
+            game.throw(0)
+            game.throw(10)
+        game.throw(0)
+        game.calculate_score()
+        self.assertEqual(game.score, 100)
