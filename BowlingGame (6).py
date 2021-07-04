@@ -28,12 +28,6 @@ class BowlingGameTests(unittest.TestCase):
         for _ in range(number_of_times):
             game.throw(pins)
 
-    def test_all_gutters(self):
-        game = BowlingGame()
-        self.throw_many(game, 20, 0)
-        game.calculate_score()
-        self.assertEqual(game.score, 0)
-
     def test_perfect_game(self):
         game = BowlingGame()
         self.throw_many(game, 12, 10)
@@ -142,3 +136,10 @@ class BowlingGameTests(unittest.TestCase):
         game.throw(0)
         game.calculate_score()
         self.assertEqual(game.score, 144)
+
+    # Test Case ID 3 - Throw 20 balls all gutters
+    def test_all_gutters(self):
+        game = BowlingGame()
+        self.throw_many(game, 20, 0)
+        game.calculate_score()
+        self.assertEqual(game.score, 0)
