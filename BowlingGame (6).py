@@ -1,14 +1,20 @@
 import unittest
 
 
+# Bowling Game Program used for adding pins knocked down per throw and stores them into a list,
+# it also provides a means to calculate the totals and store this value inside that game
 class BowlingGame(object):
+    # object variables, stores throws and score total. Throws stores the number of pins knocked down in a throw
     def __init__(self):
         self.throws = []
         self.score = 0
 
+    # method for adding pin value of a throw to throws list in object
     def throw(self, pins):
         self.throws.append(pins)
 
+    # calculates the score total of the game of the currently stored in object variable throws and
+    # updates the score total for that given game
     def calculate_score(self):
         ball = 0
         for frames in range(10):
@@ -36,7 +42,9 @@ class BowlingGame(object):
                 ball += 2
 
 
+# UNITTESTS - this is the unit tests for this program
 class BowlingGameTests(unittest.TestCase):
+    # test method for throwing multiple throws of the same value
     def throw_many(self, game, number_of_times, pins):
         for _ in range(number_of_times):
             game.throw(pins)
